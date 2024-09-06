@@ -1,35 +1,38 @@
 function pesquisar() {
-  
+  // Obtém a seção onde os resultados serão exibidos
     let section = document.getElementById("resultados-pesquisa");
-   
+   // Obtém o valor digitado pelo usuário no campo de pesquisa
     let campoPesquisa = document.getElementById ("campo-pesquisa").value
-
+   // Verifica se o campo de pesquisa está vazio
     if (!campoPesquisa){
+      // Se o campo estiver vazio, exibe uma mensagem de erro
       section.innerHTML = "<p> Nada encontrado. Você precisa digitar o nome de um dinossauro.</p>";
-      return
+      return // Interrompe a função
     };
     
     campoPesquisa = campoPesquisa.toLowerCase()
+   // Converte o valor da pesquisa para minúsculas para facilitar a comparação
 
-
-    let resultados = "";
-    let titulo = "";
-    let era = "";
-    let descricao = "";
-    let link = "";
-    let dieta = "";
-    let altura = "";
-    let peso = "";
-    let velocidade =""; 
-    let nomeCientifico = "";
-    let dominio = "";
-    let familia = "";
-    let filo = "";
-    let tags = "";
+    let resultados = "";// Inicializa uma string vazia para armazenar os resultados
+    let titulo = "";// Inicializa uma string vazia para armazenar o titulo
+    let era = ""; // Inicializa uma string vazia para armazenar a era
+    let descricao = "";// Inicializa uma string vazia para armazenar a descrição
+    let link = "";// Inicializa uma string vazia para armazenar o link
+    let dieta = "";// Inicializa uma string vazia para armazenar a dieta
+    let altura = "";// Inicializa uma string vazia para armazenar a altura
+    let peso = "";// Inicializa uma string vazia para armazenar o peso
+    let velocidade =""; // Inicializa uma string vazia para armazenar a velocidade
+    let nomeCientifico = "";// Inicializa uma string vazia para armazenar o nome científico
+    let dominio = "";// Inicializa uma string vazia para armazenar o domínio
+    let familia = "";// Inicializa uma string vazia para armazenar a família
+    let filo = "";// Inicializa uma string vazia para armazenar o filo
+    let tags = "";// Inicializa uma string vazia para armazenar as tags
 
 
   
     for (let dado of dados) {
+      // Itera sobre cada dinossauro nos dados
+
       titulo = dado.titulo.toLowerCase();
       era = dado.era.toLowerCase();
       descricao = dado.descricao.toLowerCase();
@@ -42,10 +45,13 @@ function pesquisar() {
       dominio = dado.dominio.toLowerCase();
       familia = dado.familia.toLowerCase();
       filo = dado.filo.toLowerCase();
-      tags = dado.tags.toLowerCase();
+      tags = dado.tags.toLowerCase(); 
+    // coloca todas as propriedades em minusculo
 
-      if (titulo.includes(campoPesquisa) || era.includes(campoPesquisa) ||descricao.includes(campoPesquisa) || link.includes(campoPesquisa) || dieta.includes(campoPesquisa) || altura.includes(campoPesquisa) || peso.includes(campoPesquisa) || velocidade.includes(campoPesquisa) || nomeCientifico.includes(campoPesquisa)|| dominio.includes(campoPesquisa)|| familia.includes(campoPesquisa)|| filo.includes(campoPesquisa) || tags.includes(campoPesquisa) ) {
-        resultados += `
+      if (titulo.includes(campoPesquisa) || era.includes(campoPesquisa) ||descricao.includes(campoPesquisa) || link.includes(campoPesquisa) || dieta.includes(campoPesquisa) || altura.includes(campoPesquisa) || peso.includes(campoPesquisa) || velocidade.includes(campoPesquisa) || nomeCientifico.includes(campoPesquisa)|| dominio.includes(campoPesquisa)|| familia.includes(campoPesquisa)|| filo.includes(campoPesquisa) || tags.includes(campoPesquisa) ) // Verifica se a pesquisa é encontrada em alguma propriedade do dinossauro 
+      {
+        // Se a pesquisa for encontrada, adiciona o dinossauro aos resultados
+        resultados += ` 
         <div class="item-resultado">
           <h2>
             <a href="#" target="_blank">${dado.titulo}</a>
@@ -69,9 +75,9 @@ function pesquisar() {
       } 
     }
     if (!resultados) {
-      resultados = "<p>Nada encontrado.</p>";
+      resultados = "<p>Nada encontrado.</p>"; // Se nenhum resultado foi encontrado, exibe uma mensagem
     }
       
       section.innerHTML = resultados;
-    
+    // Atualiza o conteúdo da seção com os resultados
   }
