@@ -38,3 +38,5 @@ Quer ajudar a melhorar a aplicação? Sinta-se à vontade para contribuir! Você
 **Licença:**
 
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+Teste na vercel: https://dinossauros-82d5.vercel.app
